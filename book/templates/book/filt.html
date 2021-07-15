@@ -1,0 +1,33 @@
+{% extends "book\base.html" %}
+
+{% block body %}
+<div class="container">
+<center>
+    <h2>Filter using Genre and language:</h2>
+    <form method="get">
+        {{ filter.form.as_p }}
+        <button type="submit"  class="btn btn-secondary">Submit</button>
+    </form>
+</center>
+    
+    {% for obj in filter.qs %}
+    <div class="card">
+        <div class="card-header">
+         {{obj.book_name}}
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            Author: {{obj.book_author}} <br>
+            Genre: {{obj.book_genre}} <br>
+            Language: {{obj.book_lang}} <br>
+            Year: {{obj.book_year}}
+          </p>
+        </div>
+    </div>
+    {% endfor %}
+
+
+</div>
+
+
+{% endblock body %}
